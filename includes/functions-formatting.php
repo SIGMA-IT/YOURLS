@@ -23,6 +23,20 @@ function yourls_int2string( $num, $chars = null ) {
 	return yourls_apply_filter( 'int2string', $string, $num, $chars );
 }
 
+function custom_randomstring( $chars = null ) {
+        if( $chars == null )
+                $chars = yourls_get_shorturl_charset();
+        $length = 6;
+        $string = '';
+        $max = mb_strlen($chars) - 1;
+        for ($i = 0; $i < $length; $i++) {
+            $rand_index = rand(0, $max);
+            $string .= $chars[$rand_index];
+        }
+        return $string;
+}
+
+
 /**
  * Convert a string (3jk) to an integer (1337)
  *

@@ -272,7 +272,8 @@ function yourls_add_new_link( $url, $keyword = '', $title = '' ) {
 			$id = yourls_get_next_decimal();
 			$ok = false;
 			do {
-				$keyword = yourls_int2string( $id );
+				//$keyword = yourls_int2string( $id );
+                                $keyword = custom_randomstring();
 				$keyword = yourls_apply_filter( 'random_keyword', $keyword, $url, $title );
 				if ( yourls_keyword_is_free($keyword) ) {
 					if (yourls_insert_link_in_db( $url, $keyword, $title )){
